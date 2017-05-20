@@ -13,6 +13,18 @@ func hello(a, b int) (int, bool, error) {
 	return 0, false, errors.New("Error: a < b")
 }
 
+func hello2(a, b int) (val int, check bool, err error) {
+	if a > b {
+    var = 1
+    check = true
+    err = errors.New("Error: a > b")
+		return
+	}
+
+  err = errors.New("Error: a < b")
+	return
+}
+
 func main() {
 	_, check, _ := hello(1, 2)
 	if check {
