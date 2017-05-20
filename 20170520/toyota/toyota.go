@@ -20,9 +20,9 @@ func (c *cart) Sub(price ...int) *cart {
 	return c
 }
 
-// func (c *cart) Total() float32 {
-// 	return float32(c.sum) * 0.8
-// }
+func (c *cart) Total() float32 {
+	return float32(c.sum) * 0.8
+}
 
 func NewCart(sum int) *cart {
 	return &cart{
