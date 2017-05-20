@@ -15,13 +15,13 @@ func hello(a, b int) (int, bool, error) {
 
 func hello2(a, b int) (val int, check bool, err error) {
 	if a > b {
-    var = 1
-    check = true
-    err = errors.New("Error: a > b")
+		val = 1
+		check = true
+		err = errors.New("Error: a > b")
 		return
 	}
 
-  err = errors.New("Error: a < b")
+	err = errors.New("Error: a < b")
 	return
 }
 
