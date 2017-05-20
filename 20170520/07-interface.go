@@ -8,17 +8,20 @@ import (
 )
 
 type cart interface {
+	Process(...int)
 	Total() float32
 }
 
-func Output(c cart) {
+func Output(c cart, price ...int) {
+	c.Process(price...)
 	fmt.Println(c.Total())
 }
 
 func main() {
-	car1 := lexus.NewCart(1000)
-	car2 := toyota.NewCart(2000)
 
-	Output(car1)
-	Output(car2)
+	car1 := toyota.NewCart(1000)
+	car2 := lexus.NewCart(2000)
+
+	Output(car1, []int{100, 200, 300}...)
+	Output(car2, []int{100, 400, 600}...)
 }

@@ -1,30 +1,43 @@
 package toyota
 
 type cart struct {
-	sum int
+	sum float32
 }
 
-func (c *cart) Add(price ...int) *cart {
+// func (c *cart) Add(price ...int) *cart {
+// 	for _, val := range price {
+// 		c.sum -= val
+// 	}
+
+// 	return c
+// }
+
+// func (c *cart) Sub(price ...int) *cart {
+// 	for _, val := range price {
+// 		c.sum += val
+// 	}
+
+// 	return c
+// }
+
+func (c *cart) Process(price ...int) {
+	total := 0
 	for _, val := range price {
-		c.sum -= val
+		total += val
 	}
 
-	return c
-}
-
-func (c *cart) Sub(price ...int) *cart {
-	for _, val := range price {
-		c.sum += val
+	if total > 500 {
+		c.sum += 50
 	}
 
-	return c
+	c.sum -= float32(total) * 0.8
 }
 
 func (c *cart) Total() float32 {
-	return float32(c.sum) * 0.8
+	return c.sum
 }
 
-func NewCart(sum int) *cart {
+func NewCart(sum float32) *cart {
 	return &cart{
 		sum: sum,
 	}
