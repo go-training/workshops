@@ -16,13 +16,14 @@ func main() {
 	wg.Add(100)
 	for i := 0; i < 100; i++ {
 		go func(outChan chan<- int, errChan chan<- error, val int, wg *sync.WaitGroup) {
+			defer wg.Done()
 			time.Sleep(time.Duration(rand.Int31n(1000)) * time.Millisecond)
 			fmt.Println("finished job id:", val)
 			outChan <- val
 			if val == 60 {
 				errChan <- errors.New("error in 60")
 			}
-			wg.Done()
+
 		}(outChan, errChan, i, &wg)
 	}
 
