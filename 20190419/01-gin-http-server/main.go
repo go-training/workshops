@@ -6,6 +6,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+type User struct {
+	ID    int64  `json:"user_id"`
+	Name  string `json:"name222"`
+	Email string `json:"email333"`
+}
+
 func main() {
 	r := gin.Default()
 	r.GET("/ping", func(c *gin.Context) {
@@ -13,5 +19,16 @@ func main() {
 			"message": "pong",
 		})
 	})
-	r.Run() // listen on 0.0.0.0:8080
+
+	r.GET("/user", func(c *gin.Context) {
+		user := &User{
+			ID:    100,
+			Name:  "appleboy",
+			Email: "test@gmail.com",
+		}
+		c.JSON(http.StatusOK, gin.H{
+			"user": user,
+		})
+	})
+	r.Run(":8081") // listen and serve on 0.0.0.0:8080
 }
