@@ -10,7 +10,7 @@ import (
 
 func main() {
 	outChan := make(chan int, 100)
-	errChan := make(chan error, 1)
+	errChan := make(chan error)
 	finishChan := make(chan struct{})
 	wg := sync.WaitGroup{}
 	wg.Add(100)
